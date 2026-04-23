@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player Movement")]
     private Rigidbody2D _rb;
-    public float speed;
+    public float walkSpeed;
     public float jumpForce;
     public float jumpMultiplier = .5f;
     public float normalGravity;
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        float targetSpeed = _moveInput.x * speed;
+        float targetSpeed = _moveInput.x * walkSpeed;
         _rb.linearVelocity = new Vector2(targetSpeed, _rb.linearVelocity.y);
     }
 

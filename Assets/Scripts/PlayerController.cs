@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player Movement")]
     public float walkSpeed;
+    public float runSpeed;
     public float jumpForce;
     public float jumpMultiplier = .5f;
     public float normalGravity;
@@ -15,8 +16,9 @@ public class PlayerController : MonoBehaviour
     //Inputs
     [SerializeField] private Vector2 _moveInput;
     private PlayerInput _playerInput;
-    private bool startJump;
-    private bool cancelJump;
+    private bool _startJump;
+    private bool _cancelJump;
+    private bool _isRunning;
     //Animations
     private Animator _animator;
 
@@ -61,46 +63,54 @@ public class PlayerController : MonoBehaviour
     {
         if (input.started) 
         {
-            startJump = true;
-            cancelJump = false;
+            _startJump = true;
+            _cancelJump = false;
         }
         else if(input.canceled) 
         {
-            cancelJump = true;
+            _cancelJump = true;
         }
+    }
+
+    public void InputRun(InputAction.CallbackContext input)
+    {
+        Debug.Log(input.ReadValueAsButton());
+        _isRunning = input.ReadValueAsButton();
     }
 
     private void HandleMovement()
     {
-        float targetSpeed = _moveInput.x * walkSpeed;
+        float currentSpeed = _isRunning ? runSpeed : walkSpeed;
+        float targetSpeed = _moveInput.x * currentSpeed;
         _rb.linearVelocity = new Vector2(targetSpeed, _rb.linearVelocity.y);
     }
 
     private void HandleJump() //besok kurapiin lagi
     {
-        if (startJump && _isGround) 
+        if (_startJump && _isGround) 
         {
-            startJump = false;
-            cancelJump = false;
+            _startJump = false;
+            _cancelJump = false;
             _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, jumpForce);
         }
-        if (cancelJump)
+        if (_cancelJump)
         {
-            cancelJump = false;
+            _cancelJump = false;
             if(_rb.linearVelocity.y > 0) _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, _rb.linearVelocity.y * jumpMultiplier);
         }
     }
 
-    public void HandleAnimation()
+    public void HandleAnimation()// ntar/besok/kapan-kapan ku rapiin lagi
     {
         _animator.SetBool("isIdle", Mathf.Abs(_moveInput.x) < .1f && _isGround);
-        _animator.SetBool("isWalking", Mathf.Abs(_moveInput.x) > .1f && _isGround);
-        
+        _animator.SetBool("isWalking", Mathf.Abs(_moveInput.x) > .1f && _isGround && !_isRunning);
+        _animator.SetBool("isRunning", Mathf.Abs(_moveInput.x) > .1f && _isGround && _isRunning);
+
         _animator.SetBool("isJumping", _rb.linearVelocity.y > .1f);
-        _animator.SetFloat("yVelocity", _rb.linearVelocity.y);
         _animator.SetBool("isGround", _isGround);
+        _animator.SetFloat("yVelocity", _rb.linearVelocity.y);
     }
-    
+
     public void DynamicGravity()
     {
         if (_rb.linearVelocity.y < -0.1f) _rb.gravityScale = fallGravity;

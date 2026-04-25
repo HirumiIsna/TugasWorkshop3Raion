@@ -4,20 +4,22 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Movement")]
-    private Rigidbody2D _rb;
     public float walkSpeed;
     public float jumpForce;
     public float jumpMultiplier = .5f;
     public float normalGravity;
     public float jumpGravity;
     public float fallGravity;
+    private Rigidbody2D _rb;
 
     //Inputs
     [SerializeField] private Vector2 _moveInput;
     private PlayerInput _playerInput;
     private bool startJump;
     private bool cancelJump;
-    
+    //Animations
+    private Animator _animator;
+
     [Header("Ground Check")]
     public Transform groundCheck;
     public float groundCheckRadius;
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         _playerInput = GetComponent<PlayerInput>();
         _rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     void Start()
@@ -38,6 +41,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         FlipSprite();
+        HandleAnimation();
     }
 
     void FixedUpdate()
@@ -87,6 +91,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void HandleAnimation()
+    {
+        _animator.SetBool("isIdle", Mathf.Abs(_moveInput.x) < .1f && _isGround);
+        _animator.SetBool("isWalking", Mathf.Abs(_moveInput.x) > .1f && _isGround);
+        
+        _animator.SetBool("isJumping", _rb.linearVelocity.y > .1f);
+        _animator.SetFloat("yVelocity", _rb.linearVelocity.y);
+        _animator.SetBool("isGround", _isGround);
+    }
+    
     public void DynamicGravity()
     {
         if (_rb.linearVelocity.y < -0.1f) _rb.gravityScale = fallGravity;

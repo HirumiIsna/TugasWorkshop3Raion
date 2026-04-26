@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +13,13 @@ public class PlayerController : MonoBehaviour
     public float jumpGravity;
     public float fallGravity;
     private Rigidbody2D _rb;
+    
+    [Header("Player Attack")]
+    public int attackDamage;
+    public float attackRange;
+    public Transform sideAttackPoint, upAttackPoint, downAttackPoint;
+    public LayerMask attackableLayer;
+    private bool _isAttacking;
 
     //Inputs
     [SerializeField] private Vector2 _moveInput;
@@ -78,6 +86,21 @@ public class PlayerController : MonoBehaviour
         _isRunning = input.ReadValueAsButton();
     }
 
+    public void InputAttack(InputAction.CallbackContext input)
+    {
+        if (input.started && !_isAttacking)
+        {
+            _animator.SetTrigger("isAttacking");
+
+            if(_moveInput.y > 0.1f) HandleAttack(upAttackPoint);
+            else if(_moveInput.y < -0.1f) HandleAttack(downAttackPoint);
+            else {
+                _isAttacking = true;
+                HandleAttack(sideAttackPoint);
+            }
+        }
+    }
+
     private void HandleMovement()
     {
         float currentSpeed = _isRunning ? runSpeed : walkSpeed;
@@ -100,9 +123,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void HandleAnimation()// ntar/besok/kapan-kapan ku rapiin lagi
+    private void HandleAttack(Transform point)
     {
-        _animator.SetBool("isIdle", Mathf.Abs(_moveInput.x) < .1f && _isGround);
+        StartCoroutine(AttackDebounce());
+        Collider2D[] hit = Physics2D.OverlapCircleAll(point.position, attackRange, attackableLayer);
+
+        foreach (Collider2D enemy in hit)
+        {
+            enemy.GetComponent<Health>()?.ChangeHealth(-attackDamage);
+        }
+    }
+
+    private void HandleAnimation()// ntar/besok/kapan-kapan ku rapiin lagi + benerin
+    {
+        _animator.SetBool("isIdle", Mathf.Abs(_moveInput.x) < .1f && _isGround && !_isAttacking);
         _animator.SetBool("isWalking", Mathf.Abs(_moveInput.x) > .1f && _isGround && !_isRunning);
         _animator.SetBool("isRunning", Mathf.Abs(_moveInput.x) > .1f && _isGround && _isRunning);
 
@@ -111,19 +145,19 @@ public class PlayerController : MonoBehaviour
         _animator.SetFloat("yVelocity", _rb.linearVelocity.y);
     }
 
-    public void DynamicGravity()
+    private void DynamicGravity()
     {
         if (_rb.linearVelocity.y < -0.1f) _rb.gravityScale = fallGravity;
         else if (_rb.linearVelocity.y > 0.1f) _rb.gravityScale = jumpGravity;
         else _rb.gravityScale = normalGravity;
     }
 
-    public void CheckGround()
+    private void CheckGround()
     {
         _isGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
-    public void FlipSprite()
+    private void FlipSprite()
     {
         if (_moveInput.x > 0)
         {
@@ -138,6 +172,15 @@ public class PlayerController : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);        
+        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);    
+        Gizmos.DrawWireSphere(sideAttackPoint.position, attackRange);
+        Gizmos.DrawWireSphere(upAttackPoint.position, attackRange);
+        Gizmos.DrawWireSphere(downAttackPoint.position, attackRange);    
+    }
+
+    private IEnumerator AttackDebounce() //ntar kupindah/kuganti paling, cuma buat benerin animationnya doang
+    {
+        yield return new WaitForSeconds(0.5f);
+        _isAttacking = false;
     }
 }

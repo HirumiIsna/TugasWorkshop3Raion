@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class HealthManager : MonoBehaviour
+public class Health : MonoBehaviour
 {
-    [Header("Health e gak tau perlu apa gak")]
+    [Header("Health e gak tau perlu header apa gak")]
     public int maxHealth;
     private int _currentHealth;
 
@@ -15,5 +15,19 @@ public class HealthManager : MonoBehaviour
     {
         _currentHealth += amount;
         _currentHealth = Mathf.Clamp(_currentHealth, 0, maxHealth);
+        
+        if (amount < 0) DamageTaken();
+        if (_currentHealth <= 0) Death();
+    }
+
+    private void DamageTaken()
+    {
+        Debug.Log(gameObject.name + " current health: " + _currentHealth);
+    }
+
+    private void Death() //sementara ntar ku pindah lagi
+    {
+        Debug.Log(gameObject.name + " dead");
+        Destroy(gameObject, 0.1f);
     }
 }

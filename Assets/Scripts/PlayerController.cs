@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
     public void InputJump(InputAction.CallbackContext input) //besok kurapiin lagi
     {
-        if (input.started) 
+        if (input.started && _isGround) 
         {
             _startJump = true;
             _cancelJump = false;
@@ -82,18 +82,17 @@ public class PlayerController : MonoBehaviour
 
     public void InputRun(InputAction.CallbackContext input)
     {
-        Debug.Log(input.ReadValueAsButton());
         _isRunning = input.ReadValueAsButton();
     }
 
-    public void InputAttack(InputAction.CallbackContext input)
+    public void InputAttack(InputAction.CallbackContext input) //paling kurapiin lagi tergantung mood
     {
         if (input.started && !_isAttacking)
         {
             _animator.SetTrigger("isAttacking");
 
             if(_moveInput.y > 0.1f) HandleAttack(upAttackPoint);
-            else if(_moveInput.y < -0.1f) HandleAttack(downAttackPoint);
+            else if(_moveInput.y < -0.1f && !_isGround) HandleAttack(downAttackPoint);
             else {
                 _isAttacking = true;
                 HandleAttack(sideAttackPoint);
@@ -132,6 +131,11 @@ public class PlayerController : MonoBehaviour
         {
             enemy.GetComponent<Health>()?.ChangeHealth(-attackDamage);
         }
+
+        if (point == downAttackPoint && hit.Length > 0)
+        {
+            Knockback();
+        }
     }
 
     private void HandleAnimation()// ntar/besok/kapan-kapan ku rapiin lagi + benerin
@@ -157,6 +161,10 @@ public class PlayerController : MonoBehaviour
         _isGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
+    public void Knockback() //ngetes pogo ntar klo dah bener ku jadiin universal
+    {
+        _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, jumpForce);
+    }
     private void FlipSprite()
     {
         if (_moveInput.x > 0)

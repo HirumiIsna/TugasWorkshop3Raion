@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [Header("Health e gak tau perlu header apa gak")]
     public int maxHealth;
     private int _currentHealth;
 

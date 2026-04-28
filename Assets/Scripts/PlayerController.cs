@@ -7,19 +7,25 @@ public class PlayerController : MonoBehaviour
     [Header("Player Movement")]
     public float walkSpeed;
     public float runSpeed;
+    private Rigidbody2D _rb;
+
+    [Header("Player Jump")]
     public float jumpForce;
     public float jumpMultiplier = .5f;
     public float normalGravity;
     public float jumpGravity;
     public float fallGravity;
-    private Rigidbody2D _rb;
+    public float coyoteTime = .2f;
+    private float _coyoteTimeCounter;
     
     [Header("Player Attack")]
     public int attackDamage;
     public float attackRange;
     public Transform sideAttackPoint, upAttackPoint, downAttackPoint;
     public LayerMask attackableLayer;
+    public LayerMask groundLayer;
     private bool _isAttacking;
+    private bool _isGround;
 
     //Inputs
     [SerializeField] private Vector2 _moveInput;
@@ -30,11 +36,6 @@ public class PlayerController : MonoBehaviour
     //Animations
     private Animator _animator;
 
-    [Header("Ground Check")]
-    public Transform groundCheck;
-    public float groundCheckRadius;
-    public LayerMask groundLayer;
-    private bool _isGround;
 
     void Awake()
     {
@@ -69,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
     public void InputJump(InputAction.CallbackContext input) //besok kurapiin lagi
     {
-        if (input.started && _isGround) 
+        if (input.started) 
         {
             _startJump = true;
             _cancelJump = false;
@@ -109,7 +110,10 @@ public class PlayerController : MonoBehaviour
 
     private void HandleJump() //besok kurapiin lagi
     {
-        if (_startJump && _isGround) 
+        if (_isGround) _coyoteTimeCounter = coyoteTime;
+        else _coyoteTimeCounter -= Time.deltaTime;
+
+        if (_startJump && _coyoteTimeCounter > 0) 
         {
             _startJump = false;
             _cancelJump = false;
@@ -118,6 +122,7 @@ public class PlayerController : MonoBehaviour
         if (_cancelJump)
         {
             _cancelJump = false;
+            _coyoteTimeCounter = 0f;
             if(_rb.linearVelocity.y > 0) _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, _rb.linearVelocity.y * jumpMultiplier);
         }
     }
@@ -158,7 +163,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckGround()
     {
-        _isGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        _isGround = Physics2D.Raycast(transform.position, Vector2.down, 1.5f, groundLayer);
     }
 
     public void Knockback() //ngetes pogo ntar klo dah bener ku jadiin universal
@@ -180,7 +185,7 @@ public class PlayerController : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);    
+        Gizmos.DrawRay(transform.position, Vector2.down * 1.5f);    
         Gizmos.DrawWireSphere(sideAttackPoint.position, attackRange);
         Gizmos.DrawWireSphere(upAttackPoint.position, attackRange);
         Gizmos.DrawWireSphere(downAttackPoint.position, attackRange);    

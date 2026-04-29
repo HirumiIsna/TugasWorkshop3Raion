@@ -170,6 +170,7 @@ public class PlayerController : MonoBehaviour
     {
         _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, jumpForce);
     }
+    
     private void FlipSprite()
     {
         if (_moveInput.x > 0)

@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
+    public UnityEvent<int> onHealthChange;
     public int maxHealth;
     private int _currentHealth;
 
@@ -15,6 +17,7 @@ public class Health : MonoBehaviour
         _currentHealth += amount;
         _currentHealth = Mathf.Clamp(_currentHealth, 0, maxHealth);
         
+        if(gameObject.CompareTag("Player")) onHealthChange.Invoke(_currentHealth); 
         if (amount < 0) DamageTaken();
         if (_currentHealth <= 0) Death();
     }

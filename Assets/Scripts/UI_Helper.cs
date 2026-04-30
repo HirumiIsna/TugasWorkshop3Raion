@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Health : MonoBehaviour
+public class UI_Helper : MonoBehaviour
 {
+    public Image silkBar;
     public Image[] lives;
     public Sprite fullLive;
     public Sprite emptyLive;
@@ -10,6 +11,8 @@ public class UI_Health : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        silkBar.fillAmount = 0;
+
         foreach (Image live in lives)
         {
            live.sprite = fullLive; 
@@ -25,5 +28,10 @@ public class UI_Health : MonoBehaviour
             else
                 lives[i].sprite = emptyLive;
         }
+    }
+
+    public void ChangeSilkUI(float _currentSilk, float maxSilk)
+    {
+        silkBar.fillAmount = _currentSilk / maxSilk;
     }
 }

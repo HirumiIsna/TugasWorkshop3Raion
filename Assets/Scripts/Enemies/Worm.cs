@@ -3,11 +3,11 @@ using System.Collections;
 
 public class Worm : Enemy
 {
+    public float speed;
     public LayerMask wallLayerMask;
     private bool _hitWall;
     private float _currentDirX = 1;
-    protected Rigidbody2D rb;
-    [SerializeField] protected float speed;
+    private Rigidbody2D rb;
 
     void Awake()
     {
@@ -32,6 +32,11 @@ public class Worm : Enemy
         _hitWall = false;
     }
 
+    protected override void EnemyKnockback()
+    {
+        
+    }
+
     private void CheckWall()
     {
         Vector2 _currentDir = new Vector2(_currentDirX, 0f); 
@@ -39,7 +44,7 @@ public class Worm : Enemy
         if(_hitWall) _currentDirX *= -1;
     }
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Vector2 _currentDir = new Vector2(_currentDirX, 0f); 

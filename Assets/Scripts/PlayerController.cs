@@ -27,6 +27,11 @@ public class PlayerController : MonoBehaviour
     private bool _isAttacking;
     private bool _isGround;
 
+    [Header("Player Silk")]
+    public float maxSilkAmount = 100f;
+    public int healAmount = 3; 
+    [SerializeField] private float _currentSilk;
+
     //Inputs
     [SerializeField] private Vector2 _moveInput;
     private PlayerInput _playerInput;
@@ -101,6 +106,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void InputHeal(InputAction.CallbackContext input)
+    {
+        if (input.started) HandleHeal();
+    }
+
     private void HandleMovement()
     {
         float currentSpeed = _isRunning ? runSpeed : walkSpeed;
@@ -139,7 +149,7 @@ public class PlayerController : MonoBehaviour
 
         if (point == downAttackPoint && hit.Length > 0)
         {
-            Knockback();
+            _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, jumpForce);
         }
     }
 
@@ -152,6 +162,15 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("isJumping", _rb.linearVelocity.y > .1f);
         _animator.SetBool("isGround", _isGround);
         _animator.SetFloat("yVelocity", _rb.linearVelocity.y);
+    }
+
+    private void HandleHeal()
+    {
+        if(_currentSilk < 40f) return; 
+        Debug.Log("Heal!");
+        _currentSilk -= 40f;
+        GetComponent<Health>()?.ChangeHealth(healAmount);
+        // _currentSilk = Mathf.Clamp(_currentSilk, 0, maxSilkAmount);
     }
 
     private void DynamicGravity()
@@ -168,7 +187,7 @@ public class PlayerController : MonoBehaviour
 
     public void Knockback() //ngetes pogo ntar klo dah bener ku jadiin universal
     {
-        _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, jumpForce);
+        
     }
     
     private void FlipSprite()

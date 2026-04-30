@@ -11,7 +11,7 @@ public class UI_Helper : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        silkBar.fillAmount = 0;
+        silkBar.fillAmount = 0f;
 
         foreach (Image live in lives)
         {

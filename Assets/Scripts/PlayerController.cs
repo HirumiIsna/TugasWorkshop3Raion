@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player Silk")]
     public float maxSilkAmount = 100f;
     public int healAmount = 3; 
+    public UnityEvent<float, float> onSilkChange;
     [SerializeField] private float _currentSilk;
 
     //Inputs
@@ -144,7 +146,10 @@ public class PlayerController : MonoBehaviour
 
         foreach (Collider2D enemy in hit)
         {
+            _currentSilk += 20f;
             enemy.GetComponent<Health>()?.ChangeHealth(-attackDamage);
+            onSilkChange.Invoke(_currentSilk, maxSilkAmount);
+            _currentSilk = Mathf.Clamp(_currentSilk, 0, maxSilkAmount);
         }
 
         if (point == downAttackPoint && hit.Length > 0)
@@ -166,11 +171,16 @@ public class PlayerController : MonoBehaviour
 
     private void HandleHeal()
     {
+        Health health = GetComponent<Health>();
+        if (health == null) return;
+
         if(_currentSilk < 40f) return; 
+        if(health.IsFullHealth()) return;
         Debug.Log("Heal!");
+
         _currentSilk -= 40f;
-        GetComponent<Health>()?.ChangeHealth(healAmount);
-        // _currentSilk = Mathf.Clamp(_currentSilk, 0, maxSilkAmount);
+        health.ChangeHealth(healAmount);
+        onSilkChange.Invoke(_currentSilk, maxSilkAmount);
     }
 
     private void DynamicGravity()

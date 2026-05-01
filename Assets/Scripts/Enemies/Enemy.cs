@@ -4,7 +4,7 @@ public abstract class Enemy : MonoBehaviour //IDamageOnHit //jangan pake interfa
 {
     public int onHitDamage;
 
-    void OnTriggerStay2D(Collider2D other) //ganti ke stay klo dah ada iframenya
+    void OnTriggerStay2D(Collider2D other) 
     {
         if(other.CompareTag("Player"))
         {

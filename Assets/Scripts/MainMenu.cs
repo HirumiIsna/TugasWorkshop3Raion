@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
@@ -21,7 +20,7 @@ public class MainMenu : MonoBehaviour
 
     public void Play()  
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //ntar kubikin sendiri instance scene manager klo gak males
+        ChangeSceneManager.instance.ChangeScene(1);
     }
 
     public void Quit()

@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IIncreaseSilkOnHit
 {
-    public void IncreaseDamage(float silk);
+    public void IncreaseSilk(float silk);
 }

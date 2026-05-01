@@ -60,6 +60,25 @@ public class Health : MonoBehaviour
     private void Death() 
     {
         Debug.Log(gameObject.name + " dead");
-        Destroy(gameObject, 0.1f);
+        if(gameObject.CompareTag("Player")) Respawn();
+        else
+        StartCoroutine(Hitstop());
+        Destroy(gameObject, 0.5f);
+    }
+
+    private void Respawn()
+    {
+        transform.position = CheckpointManager.instance.GetCheckpointPosition();
+        
+        _currentHealth = maxHealth;
+        onHealthChange.Invoke(_currentHealth);
+        Debug.Log("Player respawned");
+    }  
+
+    private IEnumerator Hitstop()
+    {
+        Time.timeScale = 0.25f;
+        yield return new WaitForSecondsRealtime(.6f);
+        Time.timeScale = 1f;
     }
 }

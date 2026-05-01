@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
 
         foreach (Collider2D enemy in hit)
         {
-            _currentSilk += 20f;
+            if(enemy.GetComponent<Enemy>()) _currentSilk += 20f; //ntar ku ganti ke interface paling 
             enemy.GetComponent<Health>()?.ChangeHealth(-attackDamage);
             onSilkChange.Invoke(_currentSilk, maxSilkAmount);
             _currentSilk = Mathf.Clamp(_currentSilk, 0, maxSilkAmount);

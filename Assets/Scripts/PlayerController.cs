@@ -31,8 +31,8 @@ public class PlayerController : MonoBehaviour
     [Header("Player Silk")]
     public float maxSilkAmount = 100f;
     public int healAmount = 3; 
+    private float _currentSilk;
     public UnityEvent<float, float> onSilkChange;
-    [SerializeField] private float _currentSilk;
 
     //Inputs
     [SerializeField] private Vector2 _moveInput;
@@ -43,9 +43,9 @@ public class PlayerController : MonoBehaviour
     //Animations
     private Animator _animator;
 
-
     void Awake()
     {
+        SpawnPlayerLocation();
         _playerInput = GetComponent<PlayerInput>();
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponentInChildren<Animator>();
@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _rb.gravityScale = normalGravity;
+        // _currentSilk = DataManager.instance.LoadSilk();
     }
 
     void Update()
@@ -111,6 +112,11 @@ public class PlayerController : MonoBehaviour
     public void InputHeal(InputAction.CallbackContext input)
     {
         if (input.started) HandleHeal();
+    }
+
+    public float GetCurrentSilk()
+    {
+        return _currentSilk;
     }
 
     private void HandleMovement()
@@ -195,11 +201,6 @@ public class PlayerController : MonoBehaviour
         _isGround = Physics2D.Raycast(transform.position, Vector2.down, 1.5f, groundLayer);
     }
 
-    public void Knockback() //ngetes pogo ntar klo dah bener ku jadiin universal
-    {
-        
-    }
-    
     private void FlipSprite()
     {
         if (_moveInput.x > 0)
@@ -219,6 +220,13 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(sideAttackPoint.position, attackRange);
         Gizmos.DrawWireSphere(upAttackPoint.position, attackRange);
         Gizmos.DrawWireSphere(downAttackPoint.position, attackRange);    
+    }
+
+    private void SpawnPlayerLocation()
+    {
+        Door door = GameObject.FindGameObjectWithTag("Door")?.GetComponent<Door>();
+        if(ChangeSceneManager.instance.GetDoorTarget() == door.doorNumber)
+        transform.position = door.GetSpawnLocation();
     }
 
     private IEnumerator AttackDebounce() //ntar kupindah/kuganti paling, cuma buat benerin animationnya doang

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour //IDamageOnHit //jangan pake interface dlu blom tentu penggunaanya
+public abstract class Enemy : MonoBehaviour, IDealDamage
 {
     public int onHitDamage;
 
@@ -8,13 +8,18 @@ public abstract class Enemy : MonoBehaviour //IDamageOnHit //jangan pake interfa
     {
         if(other.CompareTag("Player"))
         {
-                other.GetComponent<Health>()?.ChangeHealth(onHitDamage * -1);
-                Debug.Log(gameObject.name + " hit the player!");
+            Health health = other.GetComponent<Health>();
+            DealDamage(onHitDamage * -1, health);   
+            Debug.Log(gameObject.name + " hit the player!");
         }
+    }
+
+    public void DealDamage(int damage, Health health)
+    {
+        health.ChangeHealth(damage);
     }
 
     protected virtual void EnemyKnockback(){}
 
     protected virtual void MovementLogic(){}
-    
 }

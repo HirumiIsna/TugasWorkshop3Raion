@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour
 
     public void Play()  
     {
-        ChangeSceneManager.instance.ChangeScene(1);
+        ChangeSceneManager.instance.ChangeScene("Room_1");
     }
 
     public void Quit()

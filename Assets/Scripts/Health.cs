@@ -17,7 +17,9 @@ public class Health : MonoBehaviour
     {
         _sprite = GetComponentInChildren<SpriteRenderer>();
         _originalMat = _sprite.material;
+
         _currentHealth = maxHealth;
+        // if(gameObject.CompareTag("Player")) _currentHealth = DataManager.instance.LoadHealth();
     }
 
     public void ChangeHealth(int amount)
@@ -29,6 +31,11 @@ public class Health : MonoBehaviour
         if(gameObject.CompareTag("Player")) onHealthChange.Invoke(_currentHealth); 
         if (amount < 0) DamageTaken();
         if (_currentHealth <= 0) Death();
+    }
+
+    public int GetCurrentHealth()
+    {
+        return _currentHealth;
     }
 
     public bool IsFullHealth()
@@ -62,8 +69,10 @@ public class Health : MonoBehaviour
         Debug.Log(gameObject.name + " dead");
         if(gameObject.CompareTag("Player")) Respawn();
         else
-        StartCoroutine(Hitstop());
-        Destroy(gameObject, 0.5f);
+        {
+            StartCoroutine(Hitstop());
+            Destroy(gameObject, 0.5f);
+        }
     }
 
     private void Respawn()

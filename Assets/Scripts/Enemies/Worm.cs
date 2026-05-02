@@ -14,7 +14,6 @@ public class Worm : Enemy
         rb = GetComponent<Rigidbody2D>();
     }
 
-
     void Update()
     {
         FlipSprite();

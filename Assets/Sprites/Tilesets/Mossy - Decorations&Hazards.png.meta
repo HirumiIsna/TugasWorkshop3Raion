@@ -218,12 +218,12 @@ TextureImporter:
       name: Mossy - Decorations&Hazards_0
       rect:
         serializedVersion: 2
-        x: 231
-        y: 3197
+        x: 232
+        y: 3196
         width: 1286
-        height: 709
+        height: 710
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -240,12 +240,12 @@ TextureImporter:
       name: Mossy - Decorations&Hazards_1
       rect:
         serializedVersion: 2
-        x: 1592
+        x: 1594
         y: 3182
-        width: 1164
+        width: 1160
         height: 518
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -262,12 +262,12 @@ TextureImporter:
       name: Mossy - Decorations&Hazards_2
       rect:
         serializedVersion: 2
-        x: 2891
-        y: 3171
-        width: 1057
+        x: 2892
+        y: 3170
+        width: 1056
         height: 918
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -284,12 +284,12 @@ TextureImporter:
       name: Mossy - Decorations&Hazards_3
       rect:
         serializedVersion: 2
-        x: 123
+        x: 124
         y: 2506
-        width: 1478
-        height: 631
+        width: 1476
+        height: 630
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -307,11 +307,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2064
-        y: 2314
-        width: 1229
-        height: 812
+        y: 2316
+        width: 1228
+        height: 810
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -329,11 +329,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 432
-        y: 1609
+        y: 1610
         width: 922
-        height: 855
+        height: 852
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -350,12 +350,12 @@ TextureImporter:
       name: Mossy - Decorations&Hazards_6
       rect:
         serializedVersion: 2
-        x: 1663
-        y: 1779
-        width: 459
-        height: 426
+        x: 1664
+        y: 1780
+        width: 458
+        height: 424
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -375,9 +375,9 @@ TextureImporter:
         x: 2342
         y: 1800
         width: 612
-        height: 405
+        height: 406
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -394,12 +394,12 @@ TextureImporter:
       name: Mossy - Decorations&Hazards_8
       rect:
         serializedVersion: 2
-        x: 3163
+        x: 3164
         y: 1840
-        width: 743
+        width: 742
         height: 318
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -417,11 +417,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 1197
-        width: 291
-        height: 260
+        y: 1196
+        width: 290
+        height: 262
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -439,11 +439,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 656
-        y: 1091
+        y: 1090
         width: 276
-        height: 381
+        height: 382
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -461,11 +461,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1234
-        y: 1105
+        y: 1106
         width: 152
-        height: 363
+        height: 362
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -484,10 +484,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1578
         y: 1192
-        width: 69
-        height: 171
+        width: 68
+        height: 170
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -507,9 +507,9 @@ TextureImporter:
         x: 1642
         y: 1192
         width: 70
-        height: 131
+        height: 130
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -526,12 +526,12 @@ TextureImporter:
       name: Mossy - Decorations&Hazards_14
       rect:
         serializedVersion: 2
-        x: 1727
+        x: 1728
         y: 1180
-        width: 77
-        height: 151
+        width: 76
+        height: 150
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -548,12 +548,12 @@ TextureImporter:
       name: Mossy - Decorations&Hazards_15
       rect:
         serializedVersion: 2
-        x: 1797
+        x: 1798
         y: 1190
-        width: 67
-        height: 167
+        width: 66
+        height: 166
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -573,9 +573,9 @@ TextureImporter:
         x: 1876
         y: 1190
         width: 66
-        height: 135
+        height: 134
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -594,10 +594,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1946
         y: 1188
-        width: 76
-        height: 149
+        width: 74
+        height: 148
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -615,11 +615,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2112
-        y: 63
+        y: 64
         width: 414
         height: 1468
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -637,11 +637,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2606
-        y: 56
+        y: 58
         width: 430
-        height: 1478
+        height: 1476
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -660,10 +660,10 @@ TextureImporter:
         serializedVersion: 2
         x: 3108
         y: 54
-        width: 423
+        width: 422
         height: 1482
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -681,11 +681,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3720
-        y: 45
-        width: 250
-        height: 1505
+        y: 44
+        width: 248
+        height: 1506
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -702,12 +702,12 @@ TextureImporter:
       name: Mossy - Decorations&Hazards_22
       rect:
         serializedVersion: 2
-        x: 69
+        x: 70
         y: 578
-        width: 359
-        height: 443
+        width: 356
+        height: 442
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -724,12 +724,12 @@ TextureImporter:
       name: Mossy - Decorations&Hazards_23
       rect:
         serializedVersion: 2
-        x: 1169
-        y: 583
+        x: 1168
+        y: 584
         width: 174
         height: 410
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -747,11 +747,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1424
-        y: 985
-        width: 141
-        height: 177
+        y: 984
+        width: 142
+        height: 178
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -770,10 +770,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1598
         y: 574
-        width: 406
+        width: 404
         height: 450
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -790,12 +790,12 @@ TextureImporter:
       name: Mossy - Decorations&Hazards_26
       rect:
         serializedVersion: 2
-        x: 617
+        x: 616
         y: 688
-        width: 301
-        height: 229
+        width: 302
+        height: 228
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -813,11 +813,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 218
-        y: 59
-        width: 103
-        height: 452
+        y: 60
+        width: 102
+        height: 450
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -834,12 +834,12 @@ TextureImporter:
       name: Mossy - Decorations&Hazards_28
       rect:
         serializedVersion: 2
-        x: 573
-        y: 47
-        width: 258
-        height: 477
+        x: 574
+        y: 48
+        width: 256
+        height: 476
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -859,9 +859,9 @@ TextureImporter:
         x: 880
         y: 52
         width: 64
-        height: 401
+        height: 400
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -878,12 +878,12 @@ TextureImporter:
       name: Mossy - Decorations&Hazards_30
       rect:
         serializedVersion: 2
-        x: 1257
-        y: 67
-        width: 87
-        height: 398
+        x: 1258
+        y: 68
+        width: 86
+        height: 396
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -902,10 +902,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1598
         y: 78
-        width: 143
-        height: 287
+        width: 142
+        height: 286
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -922,12 +922,12 @@ TextureImporter:
       name: Mossy - Decorations&Hazards_32
       rect:
         serializedVersion: 2
-        x: 1661
+        x: 1660
         y: 78
-        width: 227
-        height: 401
+        width: 284
+        height: 400
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -944,12 +944,12 @@ TextureImporter:
       name: Mossy - Decorations&Hazards_33
       rect:
         serializedVersion: 2
-        x: 1810
-        y: 78
-        width: 135
-        height: 259
+        x: 1876
+        y: 80
+        width: 90
+        height: 202
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -962,33 +962,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Mossy - Decorations&Hazards_34
-      rect:
-        serializedVersion: 2
-        x: 1877
-        y: 80
-        width: 90
-        height: 202
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4022689c33c51ddf0800000000000000
-      internalID: -157243134487158268
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bc2f86fbe8c49594c81e315b0b8b62b8
     internalID: 0
     vertices: []
     indices: 
@@ -996,7 +974,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Mossy - Decorations&Hazards_0: 7217122259572505013
       Mossy - Decorations&Hazards_1: 7245173506657615631
@@ -1026,7 +1006,6 @@ TextureImporter:
       Mossy - Decorations&Hazards_31: 7225050338637960144
       Mossy - Decorations&Hazards_32: -3104618362107416908
       Mossy - Decorations&Hazards_33: -5858836328966904953
-      Mossy - Decorations&Hazards_34: -157243134487158268
       Mossy - Decorations&Hazards_4: -4847004538198489123
       Mossy - Decorations&Hazards_5: 6385898329335650500
       Mossy - Decorations&Hazards_6: 2831356835544050211
